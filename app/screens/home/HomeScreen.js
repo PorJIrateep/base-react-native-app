@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { increment, decrement, reset } from '../store/slices/counterSlice';
-import { loginSuccess, logout } from '../store/slices/userSlice';
-import I18n from '../i18n'; // Import your i18n
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { increment, decrement, reset } from '../../store/slices/counterSlice';
+import { loginSuccess, logout } from '../../store/slices/userSlice';
+import I18n from '../../i18n';
 
 export default function HomeScreen({ navigation }) {
   const dispatch = useAppDispatch();
@@ -30,16 +30,16 @@ export default function HomeScreen({ navigation }) {
       {/* Language switcher */}
       <View style={styles.languageContainer}>
         <TouchableOpacity 
-          style={[styles.langButton, I18n.language === 'en' && styles.activeLangButton]}
+          style={styles.langButton}
           onPress={() => I18n.changeLanguage('en')}
         >
-          <Text style={styles.langButtonText}>EN</Text>
+          <Text>EN</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-          style={[styles.langButton, I18n.language === 'th' && styles.activeLangButton]}
+          style={styles.langButton}
           onPress={() => I18n.changeLanguage('th')}
         >
-          <Text style={styles.langButtonText}>TH</Text>
+          <Text>TH</Text>
         </TouchableOpacity>
       </View>
       
@@ -128,13 +128,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 4,
-  },
-  activeLangButton: {
-    backgroundColor: '#007AFF',
-  },
-  langButtonText: {
-    color: '#333',
-    fontWeight: 'bold',
   },
   section: {
     marginBottom: 24,
