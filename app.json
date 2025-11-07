@@ -21,7 +21,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.capsule.baseReactNativeApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +32,11 @@
     ],
     "assetBundlePatterns": [
       "assets/fonts/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1389d7cb-335f-4554-bb4e-c154cb6817c6"
+      }
+    }
   }
 }
