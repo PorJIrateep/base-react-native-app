@@ -1,9 +1,10 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import RNRestart from 'react-native-restart';
+// import RNRestart from 'react-native-restart';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import en from './locales/en';
 import th from './locales/th';
+import { reloadAppAsync } from 'expo';
 
 // Key for storing language preference
 const LANGUAGE_KEY = 'app_language';
@@ -59,7 +60,8 @@ const changeLanguageWithRestart = async (lang) => {
     
     // Restart the app to apply changes everywhere
     setTimeout(() => {
-      RNRestart.restart();
+      // RNRestart.restart();
+      reloadAppAsync();
     }, 100); // Small delay to ensure async operations complete
     
   } catch (error) {
