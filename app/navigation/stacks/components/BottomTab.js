@@ -3,6 +3,7 @@ import { Animated, StyleSheet } from "react-native";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setFocusedTab } from "../../../store/slices/bottomtabSlice";
 import Tab from './Tab';
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const EXCLUDED_SCREEN = [
     "WebAuth",
@@ -42,6 +43,7 @@ const EXCLUDED_SCREEN = [
 ];
 
 const BottomTab = ({ routename, state, navigation, descriptors }) => {
+    const insets = useSafeAreaInsets();
     const dispatch = useAppDispatch();
     const { focusedTab, prevFocusedTab, isHide } = useAppSelector(reduxState => reduxState.bottomTab);
     const [hideStatus, setHideStatus] = useState(false);
@@ -71,7 +73,7 @@ const BottomTab = ({ routename, state, navigation, descriptors }) => {
     };
 
     return (
-        <Animated.View style={[styles.barContainer, { transform: [{ translateY: offsetY }] }]}>
+        <Animated.View style={[styles.barContainer, { transform: [{ translateY: offsetY }], paddingBottom: insets.bottom + 12 || 12 }]}>
             {state?.routes?.map((route, index) => (
                 <Tab
                     key={route?.key || index}
@@ -91,7 +93,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        paddingVertical: 10,
+        // paddingVertical: 10,
+        paddingTop: 12,
         paddingHorizontal: 16, // Add horizontal padding for better spacing
         backgroundColor: '#fff',
         borderTopWidth: 1,

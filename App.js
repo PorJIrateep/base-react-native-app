@@ -5,6 +5,7 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { store } from './app/store';
 import AppScreenContainer from './app/screens/AppScreenContainer';
+import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -39,7 +40,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <AppScreenContainer />
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <AppScreenContainer />
+      </SafeAreaProvider>
     </Provider>
   );
 }
